@@ -20,20 +20,20 @@ export interface AppConfig {
 }
 
 export const APP_CONFIG_DEFAULTS: AppConfig = {
-  companyName: 'LiveKit',
-  pageTitle: 'LiveKit Voice Agent',
-  pageDescription: 'A voice agent built with LiveKit',
+  companyName: 'Coffee Shop Barista',
+  pageTitle: 'AI Coffee Shop Barista - Murf Falcon Voice Agent',
+  pageDescription: 'Order your coffee with our AI barista powered by Murf Falcon TTS',
 
   supportsChatInput: true,
-  supportsVideoInput: true,
-  supportsScreenShare: true,
+  supportsVideoInput: false,
+  supportsScreenShare: false,
   isPreConnectBufferEnabled: true,
 
   logo: '/lk-logo.svg',
-  accent: '#002cf2',
+  accent: '#8B4513',
   logoDark: '/lk-logo-dark.svg',
-  accentDark: '#1fd5f9',
-  startButtonText: 'Start call',
+  accentDark: '#D2691E',
+  startButtonText: 'Start ordering',
 
   // for LiveKit Cloud Sandbox
   sandboxId: undefined,

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Coffee Order</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #8B4513;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        
+        .cup-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            position: relative;
+            height: 300px;
+        }
+        
+        .cup {
+            position: relative;
+            background: linear-gradient(to bottom, #f5f5f5 0%, #e0e0e0 100%);
+            border-radius: 0 0 20px 20px;
+            box-shadow: inset 0 -10px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .cup.small {
+            width: 120px;
+            height: 180px;
+        }
+        
+        .cup.medium {
+            width: 150px;
+            height: 220px;
+        }
+        
+        .cup.large {
+            width: 180px;
+            height: 260px;
+        }
+        
+        .coffee {
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            right: 10%;
+            height: 70%;
+            background: linear-gradient(to bottom, #8B4513 0%, #654321 100%);
+            border-radius: 0 0 15px 15px;
+        }
+        
+        .whipped-cream {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 40px;
+            background: #fffef0;
+            border-radius: 50% 50% 0 0;
+            box-shadow: 0 -5px 10px rgba(255,255,255,0.8);
+            display: none;
+        }
+        
+        .whipped-cream.show {
+            display: block;
+        }
+        
+        .cup-sleeve {
+            position: absolute;
+            left: 5%;
+            right: 5%;
+            height: 30%;
+            top: 40%;
+            background: #8B4513;
+            opacity: 0.6;
+        }
+        
+        .order-details {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .order-item:last-child {
+            border-bottom: none;
+        }
+        
+        .label {
+            font-weight: bold;
+            color: #8B4513;
+        }
+        
+        .value {
+            color: #333;
+        }
+        
+        .extras-list {
+            list-style: none;
+            padding: 0;
+            margin: 5px 0 0 0;
+        }
+        
+        .extras-list li {
+            padding: 3px 0;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .extras-list li:before {
+            content: "• ";
+            color: #8B4513;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>☕ Your Order</h1>
+        
+        <div class="cup-container">
+            <div class="cup medium" id="cup">
+                <div class="cup-sleeve"></div>
+                <div class="coffee"></div>
+                <div class="whipped-cream" id="whippedCream"></div>
+            </div>
+        </div>
+        
+        <div class="order-details">
+            <div class="order-item">
+                <span class="label">Drink:</span>
+                <span class="value" id="drinkType">-</span>
+            </div>
+            <div class="order-item">
+                <span class="label">Size:</span>
+                <span class="value" id="size">-</span>
+            </div>
+            <div class="order-item">
+                <span class="label">Milk:</span>
+                <span class="value" id="milk">-</span>
+            </div>
+            <div class="order-item">
+                <span class="label">Extras:</span>
+                <div class="value">
+                    <ul class="extras-list" id="extrasList">
+                        <li>None</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="order-item">
+                <span class="label">Name:</span>
+                <span class="value" id="customerName">-</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Example usage - in production this would be updated via JavaScript API
+        function updateOrder(order) {
+            // Update text fields
+            document.getElementById('drinkType').textContent = order.drinkType || '-';
+            document.getElementById('size').textContent = order.size || '-';
+            document.getElementById('milk').textContent = order.milk || '-';
+            document.getElementById('customerName').textContent = order.name || '-';
+            
+            // Update extras
+            const extrasList = document.getElementById('extrasList');
+            if (order.extras && order.extras.length > 0) {
+                extrasList.innerHTML = '';
+                order.extras.forEach(extra => {
+                    const li = document.createElement('li');
+                    li.textContent = extra;
+                    extrasList.appendChild(li);
+                });
+                
+                // Show whipped cream on cup if in extras
+                if (order.extras.some(e => e.toLowerCase().includes('whipped cream'))) {
+                    document.getElementById('whippedCream').classList.add('show');
+                }
+            } else {
+                extrasList.innerHTML = '<li>None</li>';
+            }
+            
+            // Update cup size
+            const cup = document.getElementById('cup');
+            cup.className = 'cup';
+            if (order.size) {
+                cup.classList.add(order.size.toLowerCase());
+            } else {
+                cup.classList.add('medium');
+            }
+        }
+        
+        // Example order - replace with actual data from your agent
+        // This could be loaded from a JSON file or API endpoint
+        const sampleOrder = {
+            drinkType: "Latte",
+            size: "Medium",
+            milk: "Oat milk",
+            extras: ["Vanilla syrup", "Whipped cream"],
+            name: "Alex"
+        };
+        
+        // Uncomment to test with sample data
+        // updateOrder(sampleOrder);
+        
+        // In production, you might load this from URL parameters or local storage
+        // Example: Load from URL query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('order')) {
+            try {
+                const orderData = JSON.parse(decodeURIComponent(urlParams.get('order')));
+                updateOrder(orderData);
+            } catch (e) {
+                console.error('Failed to parse order data:', e);
+            }
+        }
+    </script>
+</body>
+</html>

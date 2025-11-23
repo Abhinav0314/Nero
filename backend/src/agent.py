@@ -12,11 +12,13 @@ from livekit.agents import (
     cli,
     metrics,
     tokenize,
-    # function_tool,
-    # RunContext
+    function_tool,
+    RunContext
 )
 from livekit.plugins import murf, silero, google, deepgram, noise_cancellation
 from livekit.plugins.turn_detector.multilingual import MultilingualModel
+
+from barista import OrderState, save_order, format_order_summary
 
 logger = logging.getLogger("agent")
 
@@ -26,11 +28,60 @@ load_dotenv(".env.local")
 class Assistant(Agent):
     def __init__(self) -> None:
         super().__init__(
-            instructions="""You are a helpful voice AI assistant. The user is interacting with you via voice, even if you perceive the conversation as text.
-            You eagerly assist users with their questions by providing information from your extensive knowledge.
-            Your responses are concise, to the point, and without any complex formatting or punctuation including emojis, asterisks, or other symbols.
-            You are curious, friendly, and have a sense of humor.""",
+            instructions="""You are a friendly barista at a specialty coffee shop. The user is interacting with you via voice to place their coffee order.
+            
+Your job is to:
+1. Greet customers warmly and ask what they'd like to order
+2. Collect all required order information: drink type, size, milk preference, and their name
+3. Ask about optional extras like whipped cream, syrups, or extra shots
+4. Confirm the complete order before finalizing
+5. Be conversational, friendly, and helpful - like a real barista would be
+
+Available drinks: Latte, Cappuccino, Espresso, Americano, Mocha, Macchiato, Flat White
+Available sizes: Small, Medium, Large
+Milk options: Whole milk, Skim milk, Oat milk, Almond milk, Soy milk, Coconut milk, No milk
+Popular extras: Whipped cream, Extra shot, Vanilla syrup, Caramel syrup, Hazelnut syrup, Sugar, Honey
+
+Your responses should be concise and natural, without complex formatting or emojis.
+When you have all the required information (drink, size, milk, name), use the complete_order tool to save it.""",
         )
+        self.order_state = OrderState()
+
+    @function_tool
+    async def complete_order(
+        self, 
+        context: RunContext,
+        drink_type: str,
+        size: str,
+        milk: str,
+        name: str,
+        extras: str = ""
+    ):
+        """Use this tool when the customer has provided all required order information to finalize and save their order.
+        
+        Args:
+            drink_type: The type of drink ordered (e.g., "Latte", "Cappuccino")
+            size: The size of the drink (e.g., "Small", "Medium", "Large")
+            milk: The milk preference (e.g., "Oat milk", "Whole milk")
+            name: The customer's name for the order
+            extras: Optional comma-separated list of extras (e.g., "whipped cream, vanilla syrup")
+        """
+        logger.info(f"Completing order: {drink_type}, {size}, {milk}, {name}, extras: {extras}")
+        
+        # Update order state
+        self.order_state.drink_type = drink_type
+        self.order_state.size = size
+        self.order_state.milk = milk
+        self.order_state.name = name
+        
+        if extras:
+            self.order_state.extras = [e.strip() for e in extras.split(",") if e.strip()]
+        
+        # Save order to JSON file
+        filepath = save_order(self.order_state)
+        summary = format_order_summary(self.order_state)
+        
+        return f"Order saved successfully! {summary}. The order has been saved to {filepath}. Thank you and have a great day!"
 
     # To add tools, use the @function_tool decorator.
     # Here's an example that adds a simple weather tool.
