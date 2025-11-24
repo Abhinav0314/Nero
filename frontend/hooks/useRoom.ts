@@ -3,7 +3,9 @@ import { Room, RoomEvent, TokenSource } from 'livekit-client';
 import { AppConfig } from '@/app-config';
 import { toastAlert } from '@/components/livekit/alert-toast';
 
-export function useRoom(appConfig: AppConfig) {
+type ServiceType = 'chat' | 'coffee' | 'wellness' | null;
+
+export function useRoom(appConfig: AppConfig, selectedService: ServiceType) {
   const aborted = useRef(false);
   const room = useMemo(() => new Room(), []);
   const [isSessionActive, setIsSessionActive] = useState(false);
@@ -54,9 +56,12 @@ export function useRoom(appConfig: AppConfig) {
             body: JSON.stringify({
               room_config: appConfig.agentName
                 ? {
-                    agents: [{ agent_name: appConfig.agentName }],
-                  }
+                  agents: [{ agent_name: appConfig.agentName }],
+                }
                 : undefined,
+              metadata: {
+                service: selectedService,
+              },
             }),
           });
           return await res.json();
@@ -65,7 +70,7 @@ export function useRoom(appConfig: AppConfig) {
           throw new Error('Error fetching connection details!');
         }
       }),
-    [appConfig]
+    [appConfig, selectedService]
   );
 
   const startSession = useCallback(() => {

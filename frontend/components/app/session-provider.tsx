@@ -1,20 +1,26 @@
 'use client';
 
-import { createContext, useContext, useMemo } from 'react';
+import { createContext, useContext, useMemo, useState } from 'react';
 import { RoomContext } from '@livekit/components-react';
 import { APP_CONFIG_DEFAULTS, type AppConfig } from '@/app-config';
 import { useRoom } from '@/hooks/useRoom';
 
+type ServiceType = 'chat' | 'coffee' | 'wellness' | null;
+
 const SessionContext = createContext<{
   appConfig: AppConfig;
   isSessionActive: boolean;
+  selectedService: ServiceType;
+  setSelectedService: (service: ServiceType) => void;
   startSession: () => void;
   endSession: () => void;
 }>({
   appConfig: APP_CONFIG_DEFAULTS,
   isSessionActive: false,
-  startSession: () => {},
-  endSession: () => {},
+  selectedService: null,
+  setSelectedService: () => { },
+  startSession: () => { },
+  endSession: () => { },
 });
 
 interface SessionProviderProps {
@@ -23,10 +29,12 @@ interface SessionProviderProps {
 }
 
 export const SessionProvider = ({ appConfig, children }: SessionProviderProps) => {
-  const { room, isSessionActive, startSession, endSession } = useRoom(appConfig);
+  const [selectedService, setSelectedService] = useState<ServiceType>(null);
+  const { room, isSessionActive, startSession, endSession } = useRoom(appConfig, selectedService);
+
   const contextValue = useMemo(
-    () => ({ appConfig, isSessionActive, startSession, endSession }),
-    [appConfig, isSessionActive, startSession, endSession]
+    () => ({ appConfig, isSessionActive, selectedService, setSelectedService, startSession, endSession }),
+    [appConfig, isSessionActive, selectedService, startSession, endSession]
   );
 
   return (

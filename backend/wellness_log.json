@@ -1,0 +1,15 @@
+[
+  {
+    "mood": "good",
+    "energy_level": "medium",
+    "stress_factors": "None",
+    "objectives": [
+      "Source some bugs",
+      "spend time in nature"
+    ],
+    "self_care_intentions": "Spend time in nature",
+    "timestamp": "2025-11-24T18:41:31.179147",
+    "date": "2025-11-24",
+    "agent_summary": "User feeling good with medium energy. Stressed about: None."
+  }
+]

@@ -4,9 +4,11 @@ import { useRef } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useRoomContext } from '@livekit/components-react';
 import { useSession } from '@/components/app/session-provider';
+import { ServiceSelectionView } from '@/components/app/service-selection-view';
 import { SessionView } from '@/components/app/session-view';
 import { WelcomeView } from '@/components/app/welcome-view';
 
+const MotionServiceSelectionView = motion.create(ServiceSelectionView);
 const MotionWelcomeView = motion.create(WelcomeView);
 const MotionSessionView = motion.create(SessionView);
 
@@ -28,10 +30,16 @@ const VIEW_MOTION_PROPS = {
   },
 };
 
+const SERVICE_LABELS = {
+  chat: 'Start chatting',
+  coffee: 'Start ordering',
+  wellness: 'Start check-in',
+};
+
 export function ViewController() {
   const room = useRoomContext();
   const isSessionActiveRef = useRef(false);
-  const { appConfig, isSessionActive, startSession } = useSession();
+  const { appConfig, isSessionActive, selectedService, setSelectedService, startSession } = useSession();
 
   // animation handler holds a reference to stale isSessionActive value
   isSessionActiveRef.current = isSessionActive;
@@ -43,14 +51,30 @@ export function ViewController() {
     }
   };
 
+  const handleServiceSelection = (service: 'chat' | 'coffee' | 'wellness') => {
+    setSelectedService(service);
+  };
+
+  const startButtonText = selectedService
+    ? SERVICE_LABELS[selectedService]
+    : appConfig.startButtonText;
+
   return (
     <AnimatePresence mode="wait">
+      {/* Service selection screen */}
+      {!selectedService && !isSessionActive && (
+        <MotionServiceSelectionView
+          key="service-selection"
+          {...VIEW_MOTION_PROPS}
+          onSelectService={handleServiceSelection}
+        />
+      )}
       {/* Welcome screen */}
-      {!isSessionActive && (
+      {selectedService && !isSessionActive && (
         <MotionWelcomeView
           key="welcome"
           {...VIEW_MOTION_PROPS}
-          startButtonText={appConfig.startButtonText}
+          startButtonText={startButtonText}
           onStartCall={startSession}
         />
       )}
