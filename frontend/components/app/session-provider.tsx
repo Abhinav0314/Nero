@@ -5,7 +5,7 @@ import { RoomContext } from '@livekit/components-react';
 import { APP_CONFIG_DEFAULTS, type AppConfig } from '@/app-config';
 import { useRoom } from '@/hooks/useRoom';
 
-type ServiceType = 'chat' | 'coffee' | 'wellness' | null;
+type ServiceType = 'chat' | 'coffee' | 'wellness' | 'tutor' | null;
 
 const SessionContext = createContext<{
   appConfig: AppConfig;
@@ -26,10 +26,11 @@ const SessionContext = createContext<{
 interface SessionProviderProps {
   appConfig: AppConfig;
   children: React.ReactNode;
+  initialService?: ServiceType;
 }
 
-export const SessionProvider = ({ appConfig, children }: SessionProviderProps) => {
-  const [selectedService, setSelectedService] = useState<ServiceType>(null);
+export const SessionProvider = ({ appConfig, children, initialService = null }: SessionProviderProps) => {
+  const [selectedService, setSelectedService] = useState<ServiceType>(initialService);
   const { room, isSessionActive, startSession, endSession } = useRoom(appConfig, selectedService);
 
   const contextValue = useMemo(

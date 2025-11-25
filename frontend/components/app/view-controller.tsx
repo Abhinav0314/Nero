@@ -34,6 +34,7 @@ const SERVICE_LABELS = {
   chat: 'Start chatting',
   coffee: 'Start ordering',
   wellness: 'Start check-in',
+  tutor: 'Start learning',
 };
 
 export function ViewController() {
@@ -51,7 +52,7 @@ export function ViewController() {
     }
   };
 
-  const handleServiceSelection = (service: 'chat' | 'coffee' | 'wellness') => {
+  const handleServiceSelection = (service: 'chat' | 'coffee' | 'wellness' | 'tutor') => {
     setSelectedService(service);
   };
 

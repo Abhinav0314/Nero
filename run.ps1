@@ -70,11 +70,11 @@ try {
     Start-Sleep -Seconds 3
 
     Write-Host ""
-    Write-Host "🤖 Starting Backend Agent (main_agent.py)..." -ForegroundColor Cyan
+    Write-Host "🤖 Starting Backend Agent (multi_agent.py)..." -ForegroundColor Cyan
     $backendJob = Start-Job -ScriptBlock {
         Set-Location $using:PSScriptRoot
         Set-Location "backend"
-        uv run python src/main_agent.py dev
+        uv run python src/multi_agent.py dev
     }
     $jobs += $backendJob
     Write-Host "✅ Backend Agent started (Job ID: $($backendJob.Id))" -ForegroundColor Green

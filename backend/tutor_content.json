@@ -1,0 +1,38 @@
+[
+    {
+        "id": "variables",
+        "title": "Variables",
+        "summary": "Variables are named containers that store values in programming. Think of them like labeled boxes where you can put different types of data - numbers, text, or more complex information. You can reuse these values throughout your code by referring to the variable name. For example, if you store someone's age in a variable called 'age', you can use that value multiple times without typing the number again. Variables make code more flexible and easier to maintain because you can change the value in one place and it updates everywhere.",
+        "sample_question": "What is a variable and why is it useful in programming?"
+    },
+    {
+        "id": "loops",
+        "title": "Loops",
+        "summary": "Loops are programming structures that let you repeat actions multiple times without writing the same code over and over. There are two main types: 'for loops' which repeat a specific number of times, and 'while loops' which repeat as long as a condition is true. For example, a for loop might print numbers 1 through 10, while a while loop might keep asking for user input until they type 'quit'. Loops save time, reduce code duplication, and make programs more efficient.",
+        "sample_question": "Explain the difference between a for loop and a while loop, and give an example of when you'd use each."
+    },
+    {
+        "id": "functions",
+        "title": "Functions",
+        "summary": "Functions are reusable blocks of code that perform specific tasks. They're like mini-programs within your program. You define a function once with a name and parameters, then you can 'call' it whenever you need that task done. Functions help organize code, make it more readable, and avoid repetition. For instance, instead of writing the same calculation code five times, you write one function and call it five times. Functions can also take inputs (parameters) and return outputs (return values).",
+        "sample_question": "What is a function and what are the benefits of using functions in your code?"
+    },
+    {
+        "id": "conditionals",
+        "title": "Conditionals (If-Else)",
+        "summary": "Conditionals allow your program to make decisions based on certain conditions. The most common is the if-else statement, which checks if something is true or false and executes different code accordingly. For example, 'if the user is logged in, show their profile, else show the login page'. You can also chain multiple conditions with 'else if' to handle various scenarios. Conditionals are essential for creating dynamic, responsive programs that adapt to different situations.",
+        "sample_question": "How do if-else statements work and why are they important for program logic?"
+    },
+    {
+        "id": "arrays",
+        "title": "Arrays and Lists",
+        "summary": "Arrays (or lists in some languages) are data structures that store multiple values in a single variable. Instead of creating separate variables for each item, you can group related items together. For example, instead of having 'student1', 'student2', 'student3', you have one 'students' array containing all names. You access individual items using their position (index), starting from 0. Arrays are perfect for managing collections of data and work great with loops to process multiple items efficiently.",
+        "sample_question": "What is an array and how does it differ from a regular variable? Give an example of when you'd use an array."
+    },
+    {
+        "id": "data_types",
+        "title": "Data Types",
+        "summary": "Data types define what kind of value a variable can hold. Common types include integers (whole numbers), floats (decimal numbers), strings (text), and booleans (true/false). Each type has specific operations you can perform - you can add numbers, concatenate strings, or use logical operations on booleans. Understanding data types is crucial because mixing incompatible types can cause errors. For example, you can't directly add a number to text without converting one of them first.",
+        "sample_question": "What are the main data types in programming and why is it important to understand them?"
+    }
+]

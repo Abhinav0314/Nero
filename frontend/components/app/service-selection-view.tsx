@@ -1,6 +1,7 @@
+import Link from 'next/link';
 import { Button } from '@/components/livekit/button';
 
-function ServiceIcon({ type }: { type: 'chat' | 'coffee' | 'wellness' }) {
+function ServiceIcon({ type }: { type: 'chat' | 'coffee' | 'wellness' | 'tutor' }) {
     if (type === 'chat') {
         return (
             <svg
@@ -37,7 +38,25 @@ function ServiceIcon({ type }: { type: 'chat' | 'coffee' | 'wellness' }) {
         );
     }
 
-    // wellness
+    if (type === 'wellness') {
+        return (
+            <svg
+                width="48"
+                height="48"
+                viewBox="0 0 64 64"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="text-fg0 mb-3 size-12"
+            >
+                <path
+                    d="M32 56C30.9 56 30 55.1 30 54V10C30 8.9 30.9 8 32 8C33.1 8 34 8.9 34 10V54C34 55.1 33.1 56 32 56ZM44 44C42.9 44 42 43.1 42 42V22C42 20.9 42.9 20 44 20C45.1 20 46 20.9 46 22V42C46 43.1 45.1 44 44 44ZM20 44C18.9 44 18 43.1 18 42V22C18 20.9 18.9 20 20 20C21.1 20 22 20.9 22 22V42C22 43.1 21.1 44 20 44ZM56 36C54.9 36 54 35.1 54 34V30C54 28.9 54.9 28 56 28C57.1 28 58 28.9 58 30V34C58 35.1 57.1 36 56 36ZM8 36C6.9 36 6 35.1 6 34V30C6 28.9 6.9 28 8 28C9.1 28 10 28.9 10 30V34C10 35.1 9.1 36 8 36Z"
+                    fill="currentColor"
+                />
+            </svg>
+        );
+    }
+
+    // tutor
     return (
         <svg
             width="48"
@@ -48,7 +67,7 @@ function ServiceIcon({ type }: { type: 'chat' | 'coffee' | 'wellness' }) {
             className="text-fg0 mb-3 size-12"
         >
             <path
-                d="M32 56C30.9 56 30 55.1 30 54V10C30 8.9 30.9 8 32 8C33.1 8 34 8.9 34 10V54C34 55.1 33.1 56 32 56ZM44 44C42.9 44 42 43.1 42 42V22C42 20.9 42.9 20 44 20C45.1 20 46 20.9 46 22V42C46 43.1 45.1 44 44 44ZM20 44C18.9 44 18 43.1 18 42V22C18 20.9 18.9 20 20 20C21.1 20 22 20.9 22 22V42C22 43.1 21.1 44 20 44ZM56 36C54.9 36 54 35.1 54 34V30C54 28.9 54.9 28 56 28C57.1 28 58 28.9 58 30V34C58 35.1 57.1 36 56 36ZM8 36C6.9 36 6 35.1 6 34V30C6 28.9 6.9 28 8 28C9.1 28 10 28.9 10 30V34C10 35.1 9.1 36 8 36Z"
+                d="M16 12C13.7909 12 12 13.7909 12 16V48C12 50.2091 13.7909 52 16 52H48C50.2091 52 52 50.2091 52 48V16C52 13.7909 50.2091 12 48 12H16ZM48 16V48H16V16H48ZM20 20H44V24H20V20ZM20 28H44V32H20V28ZM20 36H36V40H20V36Z"
                 fill="currentColor"
             />
         </svg>
@@ -56,7 +75,7 @@ function ServiceIcon({ type }: { type: 'chat' | 'coffee' | 'wellness' }) {
 }
 
 interface ServiceSelectionViewProps {
-    onSelectService: (service: 'chat' | 'coffee' | 'wellness') => void;
+    onSelectService?: (service: 'chat' | 'coffee' | 'wellness' | 'tutor') => void;
 }
 
 export const ServiceSelectionView = ({
@@ -77,11 +96,11 @@ export const ServiceSelectionView = ({
                 </div>
 
                 {/* Service Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl w-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl w-full">
                     {/* General Chat */}
-                    <button
-                        onClick={() => onSelectService('chat')}
-                        className="bg-card hover:bg-accent/10 border border-border rounded-lg p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg text-center group"
+                    <Link
+                        href="/chat"
+                        className="bg-card hover:bg-accent/10 border border-border rounded-lg p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg text-center group block"
                     >
                         <div className="flex flex-col items-center">
                             <ServiceIcon type="chat" />
@@ -92,12 +111,12 @@ export const ServiceSelectionView = ({
                                 Have a friendly conversation about anything
                             </p>
                         </div>
-                    </button>
+                    </Link>
 
                     {/* Coffee Order */}
-                    <button
-                        onClick={() => onSelectService('coffee')}
-                        className="bg-card hover:bg-accent/10 border border-border rounded-lg p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg text-center group"
+                    <Link
+                        href="/coffee"
+                        className="bg-card hover:bg-accent/10 border border-border rounded-lg p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg text-center group block"
                     >
                         <div className="flex flex-col items-center">
                             <ServiceIcon type="coffee" />
@@ -108,12 +127,12 @@ export const ServiceSelectionView = ({
                                 Place an order at our virtual coffee shop
                             </p>
                         </div>
-                    </button>
+                    </Link>
 
                     {/* Wellness Check-in */}
-                    <button
-                        onClick={() => onSelectService('wellness')}
-                        className="bg-card hover:bg-accent/10 border border-border rounded-lg p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg text-center group"
+                    <Link
+                        href="/wellness"
+                        className="bg-card hover:bg-accent/10 border border-border rounded-lg p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg text-center group block"
                     >
                         <div className="flex flex-col items-center">
                             <ServiceIcon type="wellness" />
@@ -124,7 +143,23 @@ export const ServiceSelectionView = ({
                                 Daily reflection on mood, energy, and goals
                             </p>
                         </div>
-                    </button>
+                    </Link>
+
+                    {/* Tutor */}
+                    <Link
+                        href="/tutor"
+                        className="bg-card hover:bg-accent/10 border border-border rounded-lg p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg text-center group block"
+                    >
+                        <div className="flex flex-col items-center">
+                            <ServiceIcon type="tutor" />
+                            <h3 className="text-foreground text-xl font-semibold mb-2">
+                                Active Recall Tutor
+                            </h3>
+                            <p className="text-muted-foreground text-sm leading-relaxed">
+                                Learn concepts through teaching and quizzes
+                            </p>
+                        </div>
+                    </Link>
                 </div>
             </section>
 

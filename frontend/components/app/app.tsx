@@ -8,11 +8,12 @@ import { Toaster } from '@/components/livekit/toaster';
 
 interface AppProps {
   appConfig: AppConfig;
+  initialService?: 'chat' | 'coffee' | 'wellness' | 'tutor';
 }
 
-export function App({ appConfig }: AppProps) {
+export function App({ appConfig, initialService }: AppProps) {
   return (
-    <SessionProvider appConfig={appConfig}>
+    <SessionProvider appConfig={appConfig} initialService={initialService}>
       <main className="grid h-svh grid-cols-1 place-content-center">
         <ViewController />
       </main>
