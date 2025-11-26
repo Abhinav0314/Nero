@@ -1,0 +1,138 @@
+{
+    "company": {
+        "name": "Wipro Limited",
+        "tagline": "Leading global information technology, consulting and business process services company",
+        "overview": "Wipro is one of India's largest IT services companies, helping clients across six continents transform their businesses through innovative digital solutions, consulting, and technology services.",
+        "founded": "1945",
+        "headquarters": "Bangalore, India",
+        "employees": "Over 250,000 employees globally"
+    },
+    "services": [
+        {
+            "category": "IT Services & Consulting",
+            "description": "End-to-end IT services including application development, maintenance, infrastructure management, and cloud services",
+            "key_offerings": [
+                "Application Development & Modernization",
+                "Cloud & Infrastructure Services",
+                "Cybersecurity Solutions",
+                "Data Analytics & AI",
+                "Enterprise Application Services (SAP, Oracle, Salesforce)"
+            ]
+        },
+        {
+            "category": "Digital Transformation",
+            "description": "Help businesses transform digitally with cutting-edge technologies",
+            "key_offerings": [
+                "Digital Strategy & Consulting",
+                "Customer Experience Transformation",
+                "IoT & Engineering Services",
+                "Automation & AI Solutions",
+                "Blockchain Solutions"
+            ]
+        },
+        {
+            "category": "Business Process Services",
+            "description": "Optimize business operations through process excellence and automation",
+            "key_offerings": [
+                "Finance & Accounting",
+                "Customer Service Operations",
+                "HR Services",
+                "Supply Chain Management",
+                "Analytics & Insights"
+            ]
+        },
+        {
+            "category": "Industry-Specific Solutions",
+            "description": "Tailored solutions for specific industries",
+            "industries": [
+                "Banking & Financial Services",
+                "Healthcare",
+                "Retail & Consumer Goods",
+                "Manufacturing",
+                "Energy & Utilities",
+                "Communications & Media"
+            ]
+        }
+    ],
+    "faqs": [
+        {
+            "question": "What does Wipro do?",
+            "answer": "Wipro is a leading global IT services and consulting company. We help businesses transform digitally through technology services, consulting, cloud solutions, cybersecurity, data analytics, AI, and business process services across multiple industries."
+        },
+        {
+            "question": "What industries does Wipro serve?",
+            "answer": "We serve clients across banking and financial services, healthcare, retail, manufacturing, energy and utilities, communications, media, and technology sectors. Our solutions are tailored to meet industry-specific challenges and opportunities."
+        },
+        {
+            "question": "What are Wipro's core capabilities?",
+            "answer": "Our core capabilities include cloud transformation, cybersecurity, data analytics and AI, application modernization, digital customer experience, automation, IoT, and enterprise application services. We combine deep industry expertise with cutting-edge technology."
+        },
+        {
+            "question": "Does Wipro offer cloud services?",
+            "answer": "Yes, we offer comprehensive cloud services including cloud strategy and consulting, migration to AWS, Azure, and Google Cloud, cloud-native application development, managed cloud services, and multi-cloud management. We're partners with all major cloud providers."
+        },
+        {
+            "question": "What is Wipro's approach to digital transformation?",
+            "answer": "We take a holistic approach combining strategy, design, and technology. We start by understanding your business goals, then design customer-centric solutions, and implement them using agile methodologies with the latest technologies like AI, automation, and cloud."
+        },
+        {
+            "question": "How does Wipro ensure data security?",
+            "answer": "Security is embedded in everything we do. We offer comprehensive cybersecurity services including threat detection, security operations centers, identity and access management, compliance, and risk management. We're certified with ISO 27001 and follow industry best practices."
+        },
+        {
+            "question": "What is Wipro's pricing model?",
+            "answer": "We offer flexible engagement models including fixed price projects, time and material, outcome-based pricing, and managed services subscriptions. Pricing depends on project scope, duration, technology stack, and team size. We work with clients to find the most suitable model."
+        },
+        {
+            "question": "Does Wipro work with startups or only large enterprises?",
+            "answer": "While we're known for serving Fortune 500 companies, we also work with mid-market companies and growth-stage startups. We have specialized programs and flexible engagement models for companies of different sizes and maturity levels."
+        },
+        {
+            "question": "What makes Wipro different from other IT services companies?",
+            "answer": "Our differentiators include deep domain expertise across industries, global delivery capabilities with local presence, strong partnerships with technology leaders, focus on innovation and R&D, and our commitment to sustainability and responsible business practices."
+        },
+        {
+            "question": "How quickly can Wipro start a project?",
+            "answer": "Depending on project complexity and resource requirements, we can typically start within 2-4 weeks after contract signing. For urgent needs, we have rapid deployment teams that can begin discovery and initial work even sooner."
+        },
+        {
+            "question": "Does Wipro provide ongoing support after project completion?",
+            "answer": "Absolutely. We offer comprehensive managed services, application maintenance and support, infrastructure management, and continuous improvement programs. Many of our client relationships span decades with ongoing partnerships."
+        },
+        {
+            "question": "What technologies does Wipro specialize in?",
+            "answer": "We specialize in cloud platforms (AWS, Azure, GCP), AI and machine learning, automation and RPA, SAP, Salesforce, Oracle, ServiceNow, cybersecurity tools, data platforms, IoT, blockchain, and emerging technologies. We continuously invest in upskilling our teams."
+        }
+    ],
+    "target_customers": {
+        "ideal_clients": [
+            "Large enterprises seeking digital transformation",
+            "Mid-market companies looking to scale technology capabilities",
+            "Organizations needing cloud migration and modernization",
+            "Businesses requiring cybersecurity enhancement",
+            "Companies seeking to leverage AI and analytics for business insights"
+        ],
+        "team_sizes": "We work with companies from 100 to 100,000+ employees",
+        "typical_use_cases": [
+            "Legacy application modernization",
+            "Cloud migration and optimization",
+            "Building new digital products and platforms",
+            "Implementing enterprise systems (ERP, CRM)",
+            "Enhancing cybersecurity posture",
+            "Automating business processes",
+            "Data analytics and AI implementation"
+        ]
+    },
+    "engagement_process": {
+        "steps": [
+            "Initial consultation to understand business needs and challenges",
+            "Discovery and assessment phase",
+            "Solution design and proposal",
+            "Contract and team setup",
+            "Agile delivery with regular checkpoints",
+            "Deployment and go-live support",
+            "Ongoing support and optimization"
+        ],
+        "typical_timeline": "Projects range from 3 months for focused initiatives to multi-year transformation programs"
+    }
+}

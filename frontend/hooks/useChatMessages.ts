@@ -12,13 +12,14 @@ function transcriptionToChatMessage(textStream: TextStreamData, room: Room): Rec
   return {
     id: textStream.streamInfo.id,
     timestamp: textStream.streamInfo.timestamp,
+    type: 'chatMessage' as const,
     message: textStream.text,
     from:
       textStream.participantInfo.identity === room.localParticipant.identity
         ? room.localParticipant
         : Array.from(room.remoteParticipants.values()).find(
-            (p) => p.identity === textStream.participantInfo.identity
-          ),
+          (p) => p.identity === textStream.participantInfo.identity
+        ),
   };
 }
 

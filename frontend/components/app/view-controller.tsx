@@ -21,20 +21,21 @@ const VIEW_MOTION_PROPS = {
       opacity: 0,
     },
   },
-  initial: 'hidden',
-  animate: 'visible',
-  exit: 'hidden',
+  initial: 'hidden' as const,
+  animate: 'visible' as const,
+  exit: 'hidden' as const,
   transition: {
     duration: 0.5,
-    ease: 'linear',
   },
-};
+} as const;
 
 const SERVICE_LABELS = {
   chat: 'Start chatting',
   coffee: 'Start ordering',
   wellness: 'Start check-in',
   tutor: 'Start learning',
+  sdr: 'Start conversation',
+  fraud: 'Start verification',
 };
 
 export function ViewController() {
@@ -52,7 +53,7 @@ export function ViewController() {
     }
   };
 
-  const handleServiceSelection = (service: 'chat' | 'coffee' | 'wellness' | 'tutor') => {
+  const handleServiceSelection = (service: 'chat' | 'coffee' | 'wellness' | 'tutor' | 'sdr' | 'fraud') => {
     setSelectedService(service);
   };
 
