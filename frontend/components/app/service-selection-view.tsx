@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/livekit/button';
 
-function ServiceIcon({ type }: { type: 'chat' | 'coffee' | 'wellness' | 'tutor' }) {
+function ServiceIcon({ type }: { type: 'chat' | 'coffee' | 'wellness' | 'tutor' | 'sdr' | 'fraud' }) {
     if (type === 'chat') {
         return (
             <svg
@@ -57,25 +57,48 @@ function ServiceIcon({ type }: { type: 'chat' | 'coffee' | 'wellness' | 'tutor' 
     }
 
     // tutor
-    return (
-        <svg
-            width="48"
-            height="48"
-            viewBox="0 0 64 64"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="text-fg0 mb-3 size-12"
-        >
-            <path
-                d="M16 12C13.7909 12 12 13.7909 12 16V48C12 50.2091 13.7909 52 16 52H48C50.2091 52 52 50.2091 52 48V16C52 13.7909 50.2091 12 48 12H16ZM48 16V48H16V16H48ZM20 20H44V24H20V20ZM20 28H44V32H20V28ZM20 36H36V40H20V36Z"
-                fill="currentColor"
-            />
-        </svg>
-    );
+    if (type === 'tutor') {
+        return (
+            <svg
+                width="48"
+                height="48"
+                viewBox="0 0 64 64"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="text-fg0 mb-3 size-12"
+            >
+                <path
+                    d="M16 12C13.7909 12 12 13.7909 12 16V48C12 50.2091 13.7909 52 16 52H48C50.2091 52 52 50.2091 52 48V16C52 13.7909 50.2091 12 48 12H16ZM48 16V48H16V16H48ZM20 20H44V24H20V20ZM20 28H44V32H20V28ZM20 36H36V40H20V36Z"
+                    fill="currentColor"
+                />
+            </svg>
+        );
+    }
+
+    // sdr
+    if (type === 'sdr') {
+        return (
+            <svg
+                width="48"
+                height="48"
+                viewBox="0 0 64 64"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="text-fg0 mb-3 size-12"
+            >
+                <path
+                    d="M52 20H48V16C48 14.9391 47.5786 13.9217 46.8284 13.1716C46.0783 12.4214 45.0609 12 44 12H20C18.9391 12 17.9217 12.4214 17.1716 13.1716C16.4214 13.9217 16 14.9391 16 16V20H12C10.9391 20 9.92172 20.4214 9.17157 21.1716C8.42143 21.9217 8 22.9391 8 24V28C8 29.0609 8.42143 30.0783 9.17157 30.8284C9.92172 31.5786 10.9391 32 12 32H16V48C16 49.0609 16.4214 50.0783 17.1716 50.8284C17.9217 51.5786 18.9391 52 20 52H44C45.0609 52 46.0783 51.5786 46.8284 50.8284C47.5786 50.0783 48 49.0609 48 48V32H52C53.0609 32 54.0783 31.5786 54.8284 30.8284C55.5786 30.0783 56 29.0609 56 28V24C56 22.9391 55.5786 21.9217 54.8284 21.1716C54.0783 20.4214 53.0609 20 52 20ZM12 28V24H16V28H12ZM44 48H20V16H44V48ZM52 28H48V24H52V28ZM28 24H36V28H28V24ZM24 36H40V40H24V36Z"
+                    fill="currentColor"
+                />
+            </svg>
+        );
+    }
+
+
 }
 
 interface ServiceSelectionViewProps {
-    onSelectService?: (service: 'chat' | 'coffee' | 'wellness' | 'tutor') => void;
+    onSelectService?: (service: 'chat' | 'coffee' | 'wellness' | 'tutor' | 'sdr' | 'fraud') => void;
 }
 
 export const ServiceSelectionView = ({
@@ -96,7 +119,7 @@ export const ServiceSelectionView = ({
                 </div>
 
                 {/* Service Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl w-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl w-full">
                     {/* General Chat */}
                     <Link
                         href="/chat"
@@ -160,6 +183,24 @@ export const ServiceSelectionView = ({
                             </p>
                         </div>
                     </Link>
+
+                    {/* SDR Assistant */}
+                    <Link
+                        href="/sdr"
+                        className="bg-card hover:bg-accent/10 border border-border rounded-lg p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg text-center group block"
+                    >
+                        <div className="flex flex-col items-center">
+                            <ServiceIcon type="sdr" />
+                            <h3 className="text-foreground text-xl font-semibold mb-2">
+                                SDR Assistant
+                            </h3>
+                            <p className="text-muted-foreground text-sm leading-relaxed">
+                                Learn about Wipro services and solutions
+                            </p>
+                        </div>
+                    </Link>
+
+
                 </div>
             </section>
 

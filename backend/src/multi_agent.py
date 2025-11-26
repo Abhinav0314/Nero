@@ -13,6 +13,8 @@ import chat_service
 import barista_service
 import wellness_service
 import tutor_service
+import sdr_service
+
 
 load_dotenv(".env.local")
 logger = logging.getLogger("multi_agent_dispatcher")
@@ -69,6 +71,9 @@ async def entrypoint(ctx: JobContext):
             await wellness_service.entrypoint(ctx)
         elif selected_service == "tutor":
             await tutor_service.entrypoint(ctx)
+        elif selected_service == "sdr":
+            await sdr_service.entrypoint(ctx)
+
         else:
             logger.warning(f"Unknown service: {selected_service}, defaulting to chat")
             await chat_service.entrypoint(ctx)
