@@ -5,7 +5,7 @@ import { RoomContext } from '@livekit/components-react';
 import { APP_CONFIG_DEFAULTS, type AppConfig } from '@/app-config';
 import { useRoom } from '@/hooks/useRoom';
 
-type ServiceType = 'chat' | 'coffee' | 'wellness' | 'tutor' | null;
+type ServiceType = 'chat' | 'coffee' | 'wellness' | 'tutor' | 'sdr' | 'fraud' | null;
 
 const SessionContext = createContext<{
   appConfig: AppConfig;

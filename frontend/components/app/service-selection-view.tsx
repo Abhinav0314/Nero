@@ -94,7 +94,22 @@ function ServiceIcon({ type }: { type: 'chat' | 'coffee' | 'wellness' | 'tutor' 
         );
     }
 
-
+    // fraud - shield icon
+    return (
+        <svg
+            width="48"
+            height="48"
+            viewBox="0 0 64 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="text-fg0 mb-3 size-12"
+        >
+            <path
+                d="M32 8C32 8 12 12 12 16V30C12 42 20 52 32 56C44 52 52 42 52 30V16C52 12 32 8 32 8ZM48 30C48 40 42 48 32 52C22 48 16 40 16 30V18C18 17 28 13.5 32 12.5C36 13.5 46 17 48 18V30ZM28 38L22 32L24.8 29.2L28 32.4L39.2 21.2L42 24L28 38Z"
+                fill="currentColor"
+            />
+        </svg>
+    );
 }
 
 interface ServiceSelectionViewProps {
@@ -200,7 +215,21 @@ export const ServiceSelectionView = ({
                         </div>
                     </Link>
 
-
+                    {/* Fraud Alert */}
+                    <Link
+                        href="/fraud"
+                        className="bg-card hover:bg-accent/10 border border-border rounded-lg p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg text-center group block"
+                    >
+                        <div className="flex flex-col items-center">
+                            <ServiceIcon type="fraud" />
+                            <h3 className="text-foreground text-xl font-semibold mb-2">
+                                Fraud Alert
+                            </h3>
+                            <p className="text-muted-foreground text-sm leading-relaxed">
+                                Verify suspicious transactions with your bank
+                            </p>
+                        </div>
+                    </Link>
                 </div>
             </section>
 

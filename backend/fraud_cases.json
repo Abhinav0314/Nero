@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "userName": "Abhinav",
+      "securityIdentifier": "314",
+      "securityQuestion": "What is your mother's maiden name?",
+      "securityAnswer": "Singh",
+      "cases": [
+        {
+          "caseId": "CASE-001",
+          "cardEnding": "1234",
+          "status": "confirmed_fraud",
+          "transactionAmount": 1999.99,
+          "transactionName": "Premium Gaming Setup",
+          "transactionTime": "2025-11-26 21:00:00",
+          "transactionCategory": "electronics",
+          "transactionSource": "gaming-world.com",
+          "transactionLocation": "Mumbai, India",
+          "outcome": "Customer denied the transaction. Fraud confirmed.",
+          "updatedAt": "2025-11-26T22:48:31.864504"
+        }
+      ]
+    }
+  ]
+}
