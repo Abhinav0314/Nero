@@ -3,7 +3,7 @@ import { Room, RoomEvent, TokenSource } from 'livekit-client';
 import { AppConfig } from '@/app-config';
 import { toastAlert } from '@/components/livekit/alert-toast';
 
-type ServiceType = 'chat' | 'coffee' | 'wellness' | 'tutor' | 'sdr' | 'fraud' | null;
+type ServiceType = 'chat' | 'coffee' | 'wellness' | 'tutor' | 'sdr' | 'fraud' | 'grocery' | null;
 
 export function useRoom(appConfig: AppConfig, selectedService: ServiceType) {
   const aborted = useRef(false);

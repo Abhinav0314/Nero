@@ -36,6 +36,7 @@ const SERVICE_LABELS = {
   tutor: 'Start learning',
   sdr: 'Start conversation',
   fraud: 'Start verification',
+  grocery: 'Start shopping',
 };
 
 export function ViewController() {
@@ -53,7 +54,7 @@ export function ViewController() {
     }
   };
 
-  const handleServiceSelection = (service: 'chat' | 'coffee' | 'wellness' | 'tutor' | 'sdr' | 'fraud') => {
+  const handleServiceSelection = (service: 'chat' | 'coffee' | 'wellness' | 'tutor' | 'sdr' | 'fraud' | 'grocery') => {
     setSelectedService(service);
   };
 

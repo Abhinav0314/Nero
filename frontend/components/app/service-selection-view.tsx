@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/livekit/button';
 
-function ServiceIcon({ type }: { type: 'chat' | 'coffee' | 'wellness' | 'tutor' | 'sdr' | 'fraud' }) {
+function ServiceIcon({ type }: { type: 'chat' | 'coffee' | 'wellness' | 'tutor' | 'sdr' | 'fraud' | 'grocery' }) {
     if (type === 'chat') {
         return (
             <svg
@@ -110,10 +110,33 @@ function ServiceIcon({ type }: { type: 'chat' | 'coffee' | 'wellness' | 'tutor' 
             />
         </svg>
     );
+
+    // grocery
+    if (type === 'grocery') {
+        return (
+            <svg
+                width="48"
+                height="48"
+                viewBox="0 0 64 64"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="text-fg0 mb-3 size-12"
+            >
+                <path
+                    d="M18 16H46L48 24H16L18 16ZM16 24L12 40H52L48 24H16ZM52 40H12L10 48H54L52 40ZM20 48V52H24V48H20ZM40 48V52H44V48H40Z"
+                    fill="currentColor"
+                />
+                <path
+                    d="M24 12H40V16H24V12Z"
+                    fill="currentColor"
+                />
+            </svg>
+        );
+    }
 }
 
 interface ServiceSelectionViewProps {
-    onSelectService?: (service: 'chat' | 'coffee' | 'wellness' | 'tutor' | 'sdr' | 'fraud') => void;
+    onSelectService?: (service: 'chat' | 'coffee' | 'wellness' | 'tutor' | 'sdr' | 'fraud' | 'grocery') => void;
 }
 
 export const ServiceSelectionView = ({
@@ -227,6 +250,22 @@ export const ServiceSelectionView = ({
                             </h3>
                             <p className="text-muted-foreground text-sm leading-relaxed">
                                 Verify suspicious transactions with your bank
+                            </p>
+                        </div>
+                    </Link>
+
+                    {/* Grocery Order */}
+                    <Link
+                        href="/grocery"
+                        className="bg-card hover:bg-accent/10 border border-border rounded-lg p-6 transition-all duration-200 hover:scale-105 hover:shadow-lg text-center group block"
+                    >
+                        <div className="flex flex-col items-center">
+                            <ServiceIcon type="grocery" />
+                            <h3 className="text-foreground text-xl font-semibold mb-2">
+                                Grocery Ordering
+                            </h3>
+                            <p className="text-muted-foreground text-sm leading-relaxed">
+                                Order fresh groceries and prepared foods
                             </p>
                         </div>
                     </Link>

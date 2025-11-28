@@ -1,0 +1,138 @@
+[
+    {
+        "id": "g1",
+        "name": "Whole Wheat Bread",
+        "category": "Groceries",
+        "price": 3.50,
+        "tags": [
+            "vegan",
+            "bakery",
+            "bread"
+        ]
+    },
+    {
+        "id": "g2",
+        "name": "Organic Milk",
+        "category": "Groceries",
+        "price": 4.20,
+        "tags": [
+            "dairy",
+            "organic"
+        ]
+    },
+    {
+        "id": "g3",
+        "name": "Free-Range Eggs (Dozen)",
+        "category": "Groceries",
+        "price": 5.00,
+        "tags": [
+            "dairy",
+            "eggs"
+        ]
+    },
+    {
+        "id": "g4",
+        "name": "Peanut Butter",
+        "category": "Groceries",
+        "price": 4.50,
+        "tags": [
+            "vegan",
+            "pantry"
+        ]
+    },
+    {
+        "id": "g5",
+        "name": "Strawberry Jam",
+        "category": "Groceries",
+        "price": 3.80,
+        "tags": [
+            "vegan",
+            "pantry"
+        ]
+    },
+    {
+        "id": "g6",
+        "name": "Spaghetti Pasta",
+        "category": "Groceries",
+        "price": 2.00,
+        "tags": [
+            "vegan",
+            "pantry",
+            "pasta"
+        ]
+    },
+    {
+        "id": "g7",
+        "name": "Tomato Basil Sauce",
+        "category": "Groceries",
+        "price": 3.50,
+        "tags": [
+            "vegan",
+            "pantry",
+            "sauce"
+        ]
+    },
+    {
+        "id": "g8",
+        "name": "Cheddar Cheese",
+        "category": "Groceries",
+        "price": 6.00,
+        "tags": [
+            "dairy",
+            "cheese"
+        ]
+    },
+    {
+        "id": "s1",
+        "name": "Potato Chips",
+        "category": "Snacks",
+        "price": 2.50,
+        "tags": [
+            "vegan",
+            "snack"
+        ]
+    },
+    {
+        "id": "s2",
+        "name": "Chocolate Chip Cookies",
+        "category": "Snacks",
+        "price": 4.00,
+        "tags": [
+            "bakery",
+            "snack",
+            "sweet"
+        ]
+    },
+    {
+        "id": "p1",
+        "name": "Margherita Pizza",
+        "category": "Prepared Food",
+        "price": 12.00,
+        "tags": [
+            "vegetarian",
+            "pizza",
+            "hot"
+        ]
+    },
+    {
+        "id": "p2",
+        "name": "Veggie Sandwich",
+        "category": "Prepared Food",
+        "price": 7.50,
+        "tags": [
+            "vegetarian",
+            "sandwich",
+            "fresh"
+        ]
+    },
+    {
+        "id": "p3",
+        "name": "Chicken Caesar Salad",
+        "category": "Prepared Food",
+        "price": 9.00,
+        "tags": [
+            "salad",
+            "fresh"
+        ]
+    }
+]
