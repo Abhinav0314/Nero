@@ -1,0 +1,221 @@
+{
+    "intro": {
+        "title": "A Shadow over Brinmere",
+        "desc": "You awake on the damp shore of Brinmere, the moon a thin silver crescent. A ruined watchtower smolders a short distance inland, and a narrow path leads towards a cluster of cottages to the east. In the water beside you lies a small, carved wooden box, half-buried in sand.",
+        "choices": {
+            "inspect_box": {
+                "desc": "Inspect the carved wooden box at the water's edge.",
+                "result_scene": "box"
+            },
+            "approach_tower": {
+                "desc": "Head inland towards the smoldering watchtower.",
+                "result_scene": "tower"
+            },
+            "walk_to_cottages": {
+                "desc": "Follow the path east towards the cottages.",
+                "result_scene": "cottages"
+            }
+        }
+    },
+    "box": {
+        "title": "The Box",
+        "desc": "The box is warm despite the night air. Inside is a folded scrap of parchment with a hatch-marked map and the words: 'Beneath the tower, the latch sings.' As you read, a faint whisper seems to come from the tower, as if the wind itself speaks your name.",
+        "choices": {
+            "take_map": {
+                "desc": "Take the map and keep it.",
+                "result_scene": "tower_approach",
+                "effects": {"add_journal": "Found map fragment: 'Beneath the tower, the latch sings.'"}
+            },
+            "leave_box": {
+                "desc": "Leave the box where it is.",
+                "result_scene": "intro"
+            }
+        }
+    },
+    "tower": {
+        "title": "The Watchtower",
+        "desc": "The watchtower's stonework is cracked and warm embers glow within. An iron latch covers a hatch at the base — it looks old but recently used. You can try the latch, look for other entrances, or retreat.",
+        "choices": {
+            "try_latch_without_map": {
+                "desc": "Try the iron latch without any clue.",
+                "result_scene": "latch_fail"
+            },
+            "search_around": {
+                "desc": "Search the nearby rubble for another entrance.",
+                "result_scene": "secret_entrance"
+            },
+            "retreat": {
+                "desc": "Step back to the shoreline.",
+                "result_scene": "intro"
+            }
+        }
+    },
+    "tower_approach": {
+        "title": "Toward the Tower",
+        "desc": "Clutching the map, you approach the watchtower. The map's marks align with the hatch at the base, and you notice a faint singing resonance when you step close.",
+        "choices": {
+            "open_hatch": {
+                "desc": "Use the map clue and try the hatch latch carefully.",
+                "result_scene": "latch_open",
+                "effects": {"add_journal": "Used map clue to open the hatch."}
+            },
+            "search_around": {
+                "desc": "Search for another entrance.",
+                "result_scene": "secret_entrance"
+            },
+            "retreat": {
+                "desc": "Return to the shore.",
+                "result_scene": "intro"
+            }
+        }
+    },
+    "latch_fail": {
+        "title": "A Bad Twist",
+        "desc": "You twist the latch without heed — the mechanism sticks, and the effort sends a shiver through the ground. From inside the tower, something rustles in alarm.",
+        "choices": {
+            "run_away": {
+                "desc": "Run back to the shore.",
+                "result_scene": "intro"
+            },
+            "stand_ground": {
+                "desc": "Stand and prepare for whatever emerges.",
+                "result_scene": "tower_combat"
+            }
+        }
+    },
+    "latch_open": {
+        "title": "The Hatch Opens",
+        "desc": "With the map's guidance the latch yields and the hatch opens with a breath of cold air. Inside, a spiral of rough steps leads down into an ancient cellar lit by phosphorescent moss.",
+        "choices": {
+            "descend": {
+                "desc": "Descend into the cellar.",
+                "result_scene": "cellar"
+            },
+            "close_hatch": {
+                "desc": "Close the hatch and reconsider.",
+                "result_scene": "tower_approach"
+            }
+        }
+    },
+    "secret_entrance": {
+        "title": "A Narrow Gap",
+        "desc": "Behind a pile of rubble you find a narrow gap and old rope leading downward. It smells of cold iron and something briny.",
+        "choices": {
+            "squeeze_in": {
+                "desc": "Squeeze through the gap and follow the rope down.",
+                "result_scene": "cellar"
+            },
+            "mark_and_return": {
+                "desc": "Mark the spot and return to the shore.",
+                "result_scene": "intro"
+            }
+        }
+    },
+    "cellar": {
+        "title": "Cellar of Echoes",
+        "desc": "The cellar opens into a circular chamber where runes glow faintly. At the center is a stone plinth and upon it a small brass key and a sealed scroll.",
+        "choices": {
+            "take_key": {
+                "desc": "Pick up the brass key.",
+                "result_scene": "cellar_key",
+                "effects": {"add_inventory": "brass_key", "add_journal": "Found brass key on plinth."}
+            },
+            "open_scroll": {
+                "desc": "Break the seal and read the scroll.",
+                "result_scene": "scroll_reveal",
+                "effects": {"add_journal": "Scroll reads: 'The tide remembers what the villagers forget.'"}
+            },
+            "leave_quietly": {
+                "desc": "Leave the cellar and close the hatch behind you.",
+                "result_scene": "intro"
+            }
+        }
+    },
+    "cellar_key": {
+        "title": "Key in Hand",
+        "desc": "With the key in your hand the runes dim and a hidden panel slides open, revealing a small statue that begins to hum. A voice, ancient and kind, asks: 'Will you return what was taken?'",
+        "choices": {
+            "pledge_help": {
+                "desc": "Pledge to return what was taken.",
+                "result_scene": "reward",
+                "effects": {"add_journal": "You pledged to return what was taken."}
+            },
+            "refuse": {
+                "desc": "Refuse and pocket the key.",
+                "result_scene": "cursed_key",
+                "effects": {"add_journal": "You pocketed the key; a weight grows in your pocket."}
+            }
+        }
+    },
+    "scroll_reveal": {
+        "title": "The Scroll",
+        "desc": "The scroll tells of an heirloom taken by a water spirit that dwells beneath the tower. It hints that the brass key 'speaks' when offered with truth.",
+        "choices": {
+            "search_for_key": {
+                "desc": "Search the plinth for a key.",
+                "result_scene": "cellar_key"
+            },
+            "leave_quietly": {
+                "desc": "Leave the cellar and keep the knowledge to yourself.",
+                "result_scene": "intro"
+            }
+        }
+    },
+    "tower_combat": {
+        "title": "Something Emerges",
+        "desc": "A hunched, brine-soaked creature scrambles out from the tower. Its eyes glow with hunger. You must act quickly.",
+        "choices": {
+            "fight": {
+                "desc": "Fight the creature.",
+                "result_scene": "fight_win"
+            },
+            "flee": {
+                "desc": "Flee back to the shore.",
+                "result_scene": "intro"
+            }
+        }
+    },
+    "fight_win": {
+        "title": "After the Scuffle",
+        "desc": "You manage to fend off the creature; it flees wailing towards the sea. On the ground lies a small locket engraved with a crest — likely the heirloom mentioned in the scroll.",
+        "choices": {
+            "take_locket": {
+                "desc": "Take the locket and examine it.",
+                "result_scene": "reward",
+                "effects": {"add_inventory": "engraved_locket", "add_journal": "Recovered an engraved locket."}
+            },
+            "leave_locket": {
+                "desc": "Leave the locket and tend to your wounds.",
+                "result_scene": "intro"
+            }
+        }
+    },
+    "reward": {
+        "title": "A Minor Resolution",
+        "desc": "A small sense of peace settles over Brinmere. Villagers may one day know the heirloom is found, or it may remain a secret. You feel the night shift; the little arc of your story here closes for now.",
+        "choices": {
+            "end_session": {
+                "desc": "End the session and return to the shore (conclude mini-arc).",
+                "result_scene": "intro"
+            },
+            "keep_exploring": {
+                "desc": "Keep exploring for more mysteries.",
+                "result_scene": "intro"
+            }
+        }
+    },
+    "cursed_key": {
+        "title": "A Weight in the Pocket",
+        "desc": "The brass key glows coldly. You feel a heavy sorrow that tugs at your thoughts. Perhaps the key demands something in return...",
+        "choices": {
+            "seek_redemption": {
+                "desc": "Seek a way to make amends.",
+                "result_scene": "reward"
+            },
+            "bury_key": {
+                "desc": "Bury the key and hope the weight fades.",
+                "result_scene": "intro"
+            }
+        }
+    }
+}

@@ -3,7 +3,16 @@ import { Room, RoomEvent, TokenSource } from 'livekit-client';
 import { AppConfig } from '@/app-config';
 import { toastAlert } from '@/components/livekit/alert-toast';
 
-type ServiceType = 'chat' | 'coffee' | 'wellness' | 'tutor' | 'sdr' | 'fraud' | 'grocery' | null;
+type ServiceType =
+  | 'chat'
+  | 'coffee'
+  | 'wellness'
+  | 'tutor'
+  | 'sdr'
+  | 'fraud'
+  | 'grocery'
+  | 'game-master'
+  | null;
 
 export function useRoom(appConfig: AppConfig, selectedService: ServiceType) {
   const aborted = useRef(false);
@@ -49,8 +58,8 @@ export function useRoom(appConfig: AppConfig, selectedService: ServiceType) {
         const requestBody = {
           room_config: appConfig.agentName
             ? {
-              agents: [{ agent_name: appConfig.agentName }],
-            }
+                agents: [{ agent_name: appConfig.agentName }],
+              }
             : undefined,
           metadata: {
             service: selectedService,
@@ -81,7 +90,9 @@ export function useRoom(appConfig: AppConfig, selectedService: ServiceType) {
           return connectionDetails;
         } catch (error) {
           console.error('[useRoom] Error fetching connection details:', error);
-          throw new Error(`Error fetching connection details: ${error instanceof Error ? error.message : 'Unknown error'}`);
+          throw new Error(
+            `Error fetching connection details: ${error instanceof Error ? error.message : 'Unknown error'}`
+          );
         }
       }),
     [appConfig, selectedService]
@@ -100,12 +111,10 @@ export function useRoom(appConfig: AppConfig, selectedService: ServiceType) {
         room.localParticipant.setMicrophoneEnabled(true, undefined, {
           preConnectBuffer: isPreConnectBufferEnabled,
         }),
-        tokenSource
-          .fetch({ agentName: appConfig.agentName })
-          .then((connectionDetails) => {
-            console.log('[useRoom] ✓ Connecting to room with token...');
-            return room.connect(connectionDetails.serverUrl, connectionDetails.participantToken);
-          }),
+        tokenSource.fetch({ agentName: appConfig.agentName }).then((connectionDetails) => {
+          console.log('[useRoom] ✓ Connecting to room with token...');
+          return room.connect(connectionDetails.serverUrl, connectionDetails.participantToken);
+        }),
       ])
         .then(() => {
           console.log('[useRoom] ✓ Successfully connected to room');

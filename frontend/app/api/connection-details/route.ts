@@ -69,13 +69,13 @@ function createParticipantToken(
   userInfo: AccessTokenOptions,
   roomName: string,
   agentName?: string,
-  metadata?: any
+  metadata?: Record<string, unknown>
 ): Promise<string> {
   const at = new AccessToken(API_KEY, API_SECRET, {
     ...userInfo,
     ttl: '15m',
     // Add metadata as attributes if provided
-    ...(metadata && { attributes: { service: metadata.service } }),
+    ...(metadata && { attributes: { service: String(metadata.service || 'chat') } }),
   });
   const grant: VideoGrant = {
     room: roomName,

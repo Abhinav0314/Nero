@@ -8,7 +8,15 @@ import { Toaster } from '@/components/livekit/toaster';
 
 interface AppProps {
   appConfig: AppConfig;
-  initialService?: 'chat' | 'coffee' | 'wellness' | 'tutor' | 'sdr' | 'fraud' | 'grocery';
+  initialService?:
+    | 'chat'
+    | 'coffee'
+    | 'wellness'
+    | 'tutor'
+    | 'sdr'
+    | 'fraud'
+    | 'grocery'
+    | 'game-master';
 }
 
 export function App({ appConfig, initialService }: AppProps) {

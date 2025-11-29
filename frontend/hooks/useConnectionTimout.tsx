@@ -3,10 +3,10 @@ import { type AgentState, useRoomContext, useVoiceAssistant } from '@livekit/com
 import { toastAlert } from '@/components/livekit/alert-toast';
 
 function isAgentAvailable(agentState: AgentState) {
-  return agentState == 'listening' || agentState == 'thinking' || agentState == 'speaking';
+  return agentState == 'listening' || agentState == 'thinking' || agentState == 'speaking' || agentState == 'connected';
 }
 
-export function useConnectionTimeout(timout = 20_000) {
+export function useConnectionTimeout(timout = 60_000) {
   const room = useRoomContext();
   const { state: agentState } = useVoiceAssistant();
 

@@ -3,8 +3,8 @@
 import { useRef } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useRoomContext } from '@livekit/components-react';
-import { useSession } from '@/components/app/session-provider';
 import { ServiceSelectionView } from '@/components/app/service-selection-view';
+import { useSession } from '@/components/app/session-provider';
 import { SessionView } from '@/components/app/session-view';
 import { WelcomeView } from '@/components/app/welcome-view';
 
@@ -37,12 +37,14 @@ const SERVICE_LABELS = {
   sdr: 'Start conversation',
   fraud: 'Start verification',
   grocery: 'Start shopping',
+  'game-master': 'Start adventure',
 };
 
 export function ViewController() {
   const room = useRoomContext();
   const isSessionActiveRef = useRef(false);
-  const { appConfig, isSessionActive, selectedService, setSelectedService, startSession } = useSession();
+  const { appConfig, isSessionActive, selectedService, setSelectedService, startSession } =
+    useSession();
 
   // animation handler holds a reference to stale isSessionActive value
   isSessionActiveRef.current = isSessionActive;
@@ -54,7 +56,9 @@ export function ViewController() {
     }
   };
 
-  const handleServiceSelection = (service: 'chat' | 'coffee' | 'wellness' | 'tutor' | 'sdr' | 'fraud' | 'grocery') => {
+  const handleServiceSelection = (
+    service: 'chat' | 'coffee' | 'wellness' | 'tutor' | 'sdr' | 'fraud' | 'grocery' | 'game-master'
+  ) => {
     setSelectedService(service);
   };
 
